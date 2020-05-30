@@ -40,7 +40,7 @@ public class TweetRetrieval extends Configured implements Tool {
             FileInputFormat.setInputPaths(job1, new Path(args[0]));
             FileOutputFormat.setOutputPath(job1, new Path(args[1] + "/task1"));
             jobResult = job1.waitForCompletion(true) ? 0 : 1;
-            if (jobResult != 1)
+            if (jobResult != 0)
                 throw new Error("Task-1 Failed");
 
             // Task-2 provides to calculate the total word count of a document which is N parameter.
@@ -58,7 +58,7 @@ public class TweetRetrieval extends Configured implements Tool {
             FileOutputFormat.setOutputPath(job2, new Path(args[1] + "/task2"));
 
             jobResult = job2.waitForCompletion(true) ? 0 : 1;
-            if (jobResult != 1)
+            if (jobResult != 0)
                 throw new Error("Task-2 Failed");
 
             // Task-3 provides to calculate the total count of a word in all documents which is m parameter.
@@ -76,7 +76,7 @@ public class TweetRetrieval extends Configured implements Tool {
             FileOutputFormat.setOutputPath(job3, new Path(args[1] + "/task3"));
 
             jobResult = job3.waitForCompletion(true) ? 0 : 1;
-            if (jobResult != 1)
+            if (jobResult != 0)
                 throw new Error("Task-3 Failed");
 
             // Task-4 provides to calculate TF*IDF result.
@@ -95,7 +95,7 @@ public class TweetRetrieval extends Configured implements Tool {
 
             jobResult = job4.waitForCompletion(true) ? 0 : 1;
 
-            if (jobResult != 1)
+            if (jobResult != 0)
                 throw new Error("Task-4 Failed");
 
             System.out.println("All tasks completed.");
