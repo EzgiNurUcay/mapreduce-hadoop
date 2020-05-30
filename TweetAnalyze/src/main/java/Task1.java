@@ -2,13 +2,15 @@ import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.lib.input.FileSplit;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
 public class Task1 {
-
+    //In Task-1, the word frequency in the documents is calculated. It takes inputs from documents under the input folder.
+    //It prints the output to the task-1 under the output folder.
     public static class Mapper extends org.apache.hadoop.mapreduce.Mapper<LongWritable, Text, Text, IntWritable> {
         private Text word = new Text();
         private Set<String> stopWordList = new HashSet<String>();
@@ -31,13 +33,15 @@ public class Task1 {
 
         // The tweet_text converted to lowercase according to Turkish language and extracted to URLs,
         // and extracted of words smaller than 2 characters.
+        // All letters except Turkish letters were deleted.
         public void map(LongWritable key, Text value, Context context)
                 throws IOException, InterruptedException {
             FileSplit fileSplit = (FileSplit) context.getInputSplit();
             String filename = fileSplit.getPath().getName();
             String[] tweet = value.toString().split("\t");
 
-            String tweet_text = tweet[tweet.length-1].toLowerCase(TURKISH).replaceAll("https://[-a-zA-Z0-9çıöşüğ+&@#/%?=~_|!:,.;]*", " ").replaceAll("[^a-zA-Z0-9çıöşüğ\\t]", " ").replaceAll("\\b[\\wçıöşüğ]{1,2}\\b", " ");
+            String tweet_text = tweet[tweet.length - 1].toLowerCase(TURKISH).replaceAll("https://[-a-zA-Z0-9çıöşüğ+&@#/%?=~_|!:,.;]*", " ").
+                    replaceAll("[^a-zA-Z0-9çıöşüğ\\t]", " ").replaceAll("\\b[\\wçıöşüğ]{1,2}\\b", " ");
             StringTokenizer tokenizer = new StringTokenizer(tweet_text);
             while (tokenizer.hasMoreTokens()) {
                 String token = tokenizer.nextToken();

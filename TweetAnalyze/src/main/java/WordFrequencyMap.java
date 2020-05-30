@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 public class WordFrequencyMap {
-
     // Map key is preprocessed word.
     private static Map<String, List<WordCount>> wordFrequencyMap;
     static{

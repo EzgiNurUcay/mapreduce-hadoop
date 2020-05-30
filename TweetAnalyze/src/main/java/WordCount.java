@@ -1,8 +1,8 @@
 public class WordCount {
     private String docName;
     private String word;
-    private String frequency;
-    private String N;
+    private String frequency; // The word frequency in a document.
+    private String N; // The total count of words in a documents.
     public WordCount(String word,String frequency){
         this.word =word;
         this.frequency=frequency;
