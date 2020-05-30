@@ -97,4 +97,7 @@ In Task-4, the TF*IDF is calculated using Task-3 output.
 #### Useful links
 
 You can check for hadoop with IntelliJ IDEA
+
 [Using Hadoop with IntelliJ IDEA](https://intellij-support.jetbrains.com/hc/en-us/community/posts/206250189-Using-IntelliJ-to-develop-Hadoop-jobs)
+
+[Windows Hadoop Installation](https://exitcondition.com/install-hadoop-windows/)
